@@ -9,7 +9,7 @@
       "parent": "waterflask:item/waterskin_2d"
     },
     "ground": {
-      "parent": "waterflask:item/waterskin_2d"
+      "parent": "waterflask:item/waterskin_3d"
     },
     "fixed": {
       "parent": "waterflask:item/waterskin_2d"

@@ -59,7 +59,7 @@ public class WaterskinItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, world, tooltip, flagIn);
-        tooltip.add(Component.literal("Water: " + getStoredWater(stack) + "/" + MAX_WATER + " mb"));
+        tooltip.add(Component.literal("Water: " + getStoredWater(stack)/250 + "/" + MAX_WATER/250 + " bottles"));
     }
 
     // get stored water in item NBT
@@ -93,7 +93,7 @@ public class WaterskinItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         BlockHitResult hitResult = getPlayerPOVHitResult(world, player, ClipContext.Fluid.SOURCE_ONLY);
-
+//penis
         if (hitResult.getType() == HitResult.Type.BLOCK) {
             BlockPos pos = hitResult.getBlockPos();
             BlockState state = world.getBlockState(pos);
