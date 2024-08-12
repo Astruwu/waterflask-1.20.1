@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "catergory": "misc",
+  "pattern": [
+    " w ",
+    "#b#",
+    "s#s"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:leather"
+    },
+    "w": {
+      "tag": "minecraft:planks"
+    },
+    "b": {
+      "item": "minecraft:glass_bottle"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "waterflask:waterskin"
+  }
+}
