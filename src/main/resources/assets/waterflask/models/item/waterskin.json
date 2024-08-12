@@ -1,6 +1,18 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "waterflask:item/waterskin_empty"
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "waterflask:item/waterskin_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "waterflask:item/waterskin_2d"
+    },
+    "ground": {
+      "parent": "waterflask:item/waterskin_2d"
+    },
+    "fixed": {
+      "parent": "waterflask:item/waterskin_2d"
+    }
   }
 }

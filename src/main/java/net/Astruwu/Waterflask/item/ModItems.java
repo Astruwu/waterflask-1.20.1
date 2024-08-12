@@ -15,7 +15,7 @@ public class ModItems {
     //public static final RegistryObject<Item> WATERSKIN = ITEMS.register("waterskin",
             //() -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WATERSKIN = ITEMS.register("waterskin",
-            () -> new WaterskinItem(new Item.Properties()));
+            () -> new WaterskinItem(new Item.Properties().stacksTo(1)));
     public static void  register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
