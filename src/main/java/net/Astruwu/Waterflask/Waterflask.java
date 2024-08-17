@@ -40,11 +40,10 @@ public class Waterflask
 
     }
 
-    // adding the item to the creative tab
+    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event){
         if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(ModItems.WATERSKIN);
-            event.accept(ModItems.FLASK);
         }
     }
 
