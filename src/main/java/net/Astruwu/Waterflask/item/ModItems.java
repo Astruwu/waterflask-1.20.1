@@ -1,6 +1,7 @@
 package net.Astruwu.Waterflask.item;
 
 import net.Astruwu.Waterflask.Waterflask;
+import net.Astruwu.Waterflask.item.custom.FlaskItem;
 import net.Astruwu.Waterflask.item.custom.WaterskinItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -14,6 +15,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> WATERSKIN = ITEMS.register("waterskin",
             () -> new WaterskinItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FLASK = ITEMS.register("flask",
+            () -> new FlaskItem(new Item.Properties().stacksTo(1)));
     public static void  register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

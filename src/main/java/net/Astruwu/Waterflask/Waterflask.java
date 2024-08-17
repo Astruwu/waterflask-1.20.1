@@ -44,6 +44,7 @@ public class Waterflask
     private void addCreative(BuildCreativeModeTabContentsEvent event){
         if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(ModItems.WATERSKIN);
+            event.accept(ModItems.FLASK);
         }
     }
 
