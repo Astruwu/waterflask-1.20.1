@@ -1,4 +1,4 @@
 {
   "replace": false,
-  "values": ["waterflask:waterskin"]
+  "values": ["waterflask:waterskin", "waterflask:flask"]
 }

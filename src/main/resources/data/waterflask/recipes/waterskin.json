@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "catergory": "misc",
+  "category": "misc",
   "pattern": [
     " w ",
     "#b#",

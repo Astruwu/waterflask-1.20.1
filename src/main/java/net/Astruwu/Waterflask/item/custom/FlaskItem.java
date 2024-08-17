@@ -5,6 +5,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -21,17 +23,17 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.List;
-
 @ParametersAreNonnullByDefault
-public class WaterskinItem extends Item {
+public class FlaskItem extends Item {
 
-    private static final int MAX_WATER = 1500;
-    // 1500 divided by 250 is 6 bottles of water
+    private static final int MAX_WATER = 250*12;
+    // 250mb times 12 bottles
     private static final int WATER_INCREMENT = 250;
     // Amount of water added per use in mb
 
-    public WaterskinItem(Properties pProperties) {
+    public FlaskItem(Properties pProperties) {
         super(pProperties);
     }
 
@@ -61,7 +63,7 @@ public class WaterskinItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, world, tooltip, flagIn);
-        tooltip.add(Component.literal("Water: " + getStoredWater(stack)/250 + "/" + MAX_WATER/250 + " bottles"));
+        tooltip.add(Component.literal("Water: " + getStoredWater(stack) / 250 + "/" + MAX_WATER / 250 + " bottles"));
     }
 
     // get stored water in item NBT
@@ -105,16 +107,16 @@ public class WaterskinItem extends Item {
                 int currentWaterAmount = getStoredWater(stack);
                 if (currentWaterAmount < MAX_WATER) {
                     int fillAmount = Math.min(WATER_INCREMENT, MAX_WATER - currentWaterAmount);
-                    setStoredWater(stack, currentWaterAmount + fillAmount); // add the amount of water to the waterskin
+                    setStoredWater(stack, currentWaterAmount + fillAmount); // add the amount of water to the flask
                     player.swing(hand);
                     if (!world.isClientSide) {
-                        player.displayClientMessage(Component.literal("Filled the waterskin with water!"), true);
+                        player.displayClientMessage(Component.literal("Filled the flask with water!"), true);
                     }
                     return InteractionResultHolder.success(stack);
                 } else {
-                    // displays message to player that the waterskin is full
+                    // displays message to player that the flask is full
                     if (!world.isClientSide) {
-                        player.displayClientMessage(Component.literal("The waterskin is full!"), true);
+                        player.displayClientMessage(Component.literal("The flask is full!"), true);
                     }
                     return InteractionResultHolder.fail(stack);
                 }
@@ -124,11 +126,12 @@ public class WaterskinItem extends Item {
         // If not looking at water, handle drinking
         if (getStoredWater(stack) > 0) {
             player.startUsingItem(hand);
+            player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 110, 0));
             return InteractionResultHolder.consume(stack);
         } else {
             // Optionally, you can add a message to the player indicating the flask is empty
             if (!world.isClientSide) {
-                player.displayClientMessage(Component.literal("The waterskin is empty!"), true);
+                player.displayClientMessage(Component.literal("The flask is empty!"), true);
             }
             return InteractionResultHolder.fail(stack);
         }
